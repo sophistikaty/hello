@@ -1,17 +1,17 @@
+/**
+ * hackerrank.com sock merchant
+ */
 function getPairCount(socksIn) {
     const socksClone = socksIn.slice(0);
     return socksIn.reduce(function (pairCount, sockColor){
         const firstIndex = socksClone.indexOf(sockColor);
         const lastIndex = socksClone.lastIndexOf(sockColor);
         const hasPair = firstIndex !== lastIndex; 
-        console.log('socksClone, sockColor ', socksClone, sockColor);
-        console.log('lastIndex, firstIndex ',  lastIndex, firstIndex);
         if (hasPair){
             socksClone.splice(firstIndex, 1);
             socksClone.splice(socksClone.indexOf(sockColor), 1);
             pairCount++;
         }
-        console.log('hasPair, pairCount ', hasPair, pairCount);
        return pairCount;
     },0);
 }
