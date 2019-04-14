@@ -8,14 +8,14 @@
  }
 
 function jumpingOnClouds(clouds) {
-    return clouds.reduce(function(jumpCount, cloud, index, cloudArr){
-        const isFirstCloud = index === 0;
+    return clouds.reduce(function(jumpTracker, cloud, index, cloudArr){
         const isLastCloud = index === cloudArr.length -1;
-        const landHere = isLastCloud || (!isFirstCloud && !isThunder(cloud) 
-        && (isThunder(cloudArr[index+1]) || isThunder(cloudArr[index-1])));
-        console.log('landHere, jumpCount, cloud ', landHere, jumpCount, cloud);
-        return landHere ? jumpCount + 1 : jumpCount;
-    },0);
+        const isMaxJump = index === jumpTracker.lastJump +2;
+        const landHere = !isThunder(cloud) && (isLastCloud || isMaxJump || isThunder(cloudArr[index+1]));
+        jumpTracker.lastJump = landHere ? index : jumpTracker.lastJump;
+        jumpTracker.jumpCount = landHere ? jumpTracker.jumpCount +1 : jumpTracker.jumpCount;
+        return jumpTracker;
+    },{lastJump:0, jumpCount:0}).jumpCount;
 }
 
 const clouds = [0, 0, 0, 1, 0, 0];
