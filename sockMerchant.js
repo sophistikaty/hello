@@ -1,5 +1,6 @@
 /**
  * hackerrank.com sock merchant
+ * https://www.hackerrank.com/challenges/sock-merchant/problem
  */
 function getPairCount(socksIn) {
     const socksClone = socksIn.slice(0);

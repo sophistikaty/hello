@@ -1,5 +1,6 @@
 /**
  * hackerrank.com counting valleys
+ * https://www.hackerrank.com/challenges/counting-valleys/problem
  */
 
  function trackStep(tracker, step){
