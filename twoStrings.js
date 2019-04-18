@@ -2,21 +2,15 @@
  * hackerrank.com two strings (hashmaps)
  * https://www.hackerrank.com/challenges/two-strings/problem
  */
-function mapChars(string){
-
-    return string.split('').reduce(function(map,char){
-        //initialize key structure without values
-        map[char] = null;
-        return map;
-    },{});
-}
 
  function twoStrings(s1, s2) {
-    const substringMap1  = mapChars(s1);
-
+    const hasMatchingSubString = s1.split('').some(function(char){
+        return s2.indexOf(char) !== -1;
+    },{});
+    return hasMatchingSubString ? 'YES' : 'NO';
 }
 
-const stringOne = 'hello';
+const stringOne = 'hi';
 const stringTwo = 'world';
 
-console.log('Do these two strings share any substrings? ', twoStrings(stringOne, stringTwo);)
+console.log('Do these two strings share any substrings? ', twoStrings(stringOne, stringTwo));
